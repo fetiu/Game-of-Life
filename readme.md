@@ -14,6 +14,7 @@
 
 
 
+
 - 언어는 **C**로 작성하였으며, **bash shell** 상에서 실행되도록하였습니다.
 
 - 입력 형태는 **표준입력**, 출력 형태는 **표준출력** 입니다.
@@ -116,5 +117,5 @@ $ sudo apt-get install python-pygame
 and after then, retry python GoL.py
 
 - to execute in Window,
-	- if you haven't installed python,download Python3 from the (site)
-	- install 'pygame' library. Follow instructions of (this site)[http://dogdriip.tistory.com/3]
+	- if you haven't installed python,download Python3 from official (homepage)[https://www.python.org].
+	- install 'pygame' library. Follow instructions of this (site)[http://dogdriip.tistory.com/3].
