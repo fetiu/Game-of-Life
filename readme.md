@@ -12,18 +12,18 @@
 >
 > 이 프로그램은 초기 세포 matrix가 표준 입력으로 주어졌을 때 t 주기 후 세포 matrix 를 화면에 출력합니다.
 
----
 
-언어는 **C**로 작성하였으며, **bash shell** 상에서 실행되도록하였습니다.
 
-입력 형태는 **표준입력**, 출력 형태는 **표준출력** 입니다.
+- 언어는 **C**로 작성하였으며, **bash shell** 상에서 실행되도록하였습니다.
 
-프로그램 실행 시 명령행 인자로 **출력할 matrix의 크기**와 **주기 t**를 입력해야합니다.
+- 입력 형태는 **표준입력**, 출력 형태는 **표준출력** 입니다.
 
-초기 세포 matrix 를 표준입력으로 전달하기 위해서는,
+- 프로그램 실행 시 명령행 인자로 **출력할 matrix의 크기**와 **주기 t**를 입력해야합니다.
 
-1. 실행 이후에 matrix를 manual하게 적어주거나
-2. **리디렉션**을 이용하여 초기 세포 matrix가 적힌 파일을 실행 시 전달하면 됩니다. 
+- 초기 세포 matrix 를 표준입력으로 전달하기 위해서는,
+
+	1. 실행 이후에 matrix를 manual하게 적어주거나
+	2. **리디렉션**을 이용하여 초기 세포 matrix가 적힌 파일을 실행 시 전달하면 됩니다. 
 
 
 
@@ -98,4 +98,22 @@ $ ./GoL 5 5 10
 	}
 
 ```
+---
+## in Python 'pygame'
 
+- its not complete. still ongoing
+
+- to execute in Linux, 
+```
+$ python3 GoL.py
+```
+	if the 'No module name' error occurs,
+	it means you didn't installed pygame library, type below
+```
+$ sudo apt-get install python-pygame
+```
+	and after then, retry.
+
+- to execute in Window
+	1. if you haven't installed python,download Python3 from the (site)
+	2. install 'pygame' library. Follow instructions of (this site)[http://dogdriip.tistory.com/3]
