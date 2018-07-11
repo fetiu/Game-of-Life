@@ -72,7 +72,7 @@ cell_t** init_matrix(int height, int width){
 		matrix[i] = (cell_t*)malloc(sizeof(cell_t)*width);
 
 	/*get matrix from stdin*/
-	printf(">> insert %d x %d matrix. (with 1 or 0)\n",n,m);
+	printf(">> insert %d x %d matrix. (with 1 or 0)\n", height, width);
 	for(int i = 0; i < height; i++)
 	{
 		scanf("%s",input_str);
