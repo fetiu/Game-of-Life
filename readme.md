@@ -117,5 +117,5 @@ $ sudo apt-get install python-pygame
 and after then, retry python GoL.py
 
 - to execute in Window,
-	- if you haven't installed python,download Python3 from [official homepage](https://www.python.org).
+	- if you haven't installed python,download Python2 from [official homepage](https://www.python.org).
 	- install 'pygame' library. Follow instructions of [this site](http://dogdriip.tistory.com/3).
