@@ -102,7 +102,7 @@ $ ./GoL 5 5 10
 ---
 ## Python version via 'pygame'
 
-- its not complete. still ongoing
+- it's not complete. still ongoing
 
 - to execute in Linux, 
 ```
