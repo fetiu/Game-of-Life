@@ -105,15 +105,16 @@ $ ./GoL 5 5 10
 
 - to execute in Linux, 
 ```
-$ python3 GoL.py
+$ python GoL.py
 ```
-	if the 'No module name' error occurs,
-	it means you didn't installed pygame library, type below
+
+- if the 'No module name' error occurs, type below
+
 ```
 $ sudo apt-get install python-pygame
 ```
-	and after then, retry.
+	and after then, retry python GoL.py
 
 - to execute in Window
-	1. if you haven't installed python,download Python3 from the (site)
-	2. install 'pygame' library. Follow instructions of (this site)[http://dogdriip.tistory.com/3]
+	- if you haven't installed python,download Python3 from the (site)
+	- install 'pygame' library. Follow instructions of (this site)[http://dogdriip.tistory.com/3]
