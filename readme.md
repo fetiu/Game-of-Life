@@ -109,7 +109,7 @@ $ ./GoL 5 5 10
 $ python GoL.py
 ```
 
-if the 'No module name' error occurs, type below
+if the 'No module name' error occurs, type this
 
 ```
 $ sudo apt-get install python-pygame
