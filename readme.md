@@ -99,7 +99,7 @@ $ ./GoL 5 5 10
 
 ```
 ---
-## in Python 'pygame'
+## Python version via 'pygame'
 
 - its not complete. still ongoing
 
