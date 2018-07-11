@@ -8,7 +8,7 @@ class matrix:
         f = open(path, 'r')
         lines = f.readlines()
         self.status = [[x == '1' for x in list(row)[0:len(row)-1]] for row in lines]
-        #slice row to eliminate \n.
+        #slice row to eliminate line feed.
         self.height = len(self.status)
         self.width = len(self.status[0])
         
@@ -25,7 +25,7 @@ class matrix:
     def __count__(self):
         return random.randrange(0,8)
 
-    def update(self):
+    def update_generation(self):
         
         for y in range(self.height):
             for x in range(self.width):
@@ -36,7 +36,7 @@ class matrix:
                         self.status[y][x] = False
                         #death
 
-    def printm(self):
+    def print_status(self):
         display.fill((255,255,255))
         
         for y in range(self.height):
@@ -61,7 +61,7 @@ display = pygame.display.set_mode(resolution);
 t = int(input('how many cycle do you want?: '))
 i = 0
 while t > i:
-    cells.printm();
+    cells.print_status();
     i+=1
-    cells.update();
+    cells.update_generation();
     time.sleep(5)
