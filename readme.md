@@ -118,4 +118,4 @@ and after then, retry python GoL.py
 
 - to execute in Window,
 	- if you haven't installed python,download Python2 from [official homepage](https://www.python.org).
-	- install 'pygame' library. Follow instructions of [this site](http://dogdriip.tistory.com/3).
+	- install 'pygame' library. Follow the guide of [this site](http://dogdriip.tistory.com/3).
