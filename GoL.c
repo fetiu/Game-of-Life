@@ -175,11 +175,11 @@ void update_generation(cell_t** matrix){
 	gen++;
 
 	/*make a copy of count array before modifying it*/ 
-	int** tmp = (int**)malloc(sizeof(int*)*n);
+	int** count = (int**)malloc(sizeof(int*)*n);
 	for(int i = 0; i < n; i++){
-		tmp[i] = (int*)malloc(sizeof(int)*m);
+		count[i] = (int*)malloc(sizeof(int)*m);
 		for(int j = 0; j < m; j++){
-			tmp[i][j] = matrix[i][j].count;
+			count[i][j] = matrix[i][j].count;
 		}
 	}
 	
@@ -190,10 +190,10 @@ void update_generation(cell_t** matrix){
 			
 			if(cell->life == TRUE)
 			{
-				if(tmp[i][j] != 2 && tmp[i][j] != 3) 
+				if(count[i][j] != 2 && count[i][j] != 3) 
 					death(cell);	
 			}	
-			else if(tmp[i][j] == 3)
+			else if(count[i][j] == 3)
 			{
 				birth(cell);
 			}
@@ -201,8 +201,8 @@ void update_generation(cell_t** matrix){
 	}
 
 	for( int i =0; i < n; i++)
-		free(tmp[i]);
-	free(tmp);
+		free(count[i]);
+	free(count);
 }
 
 
