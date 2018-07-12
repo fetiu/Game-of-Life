@@ -26,7 +26,7 @@
 	1. 실행 이후에 matrix를 manual하게 적어주거나
 	2. **리디렉션**을 이용하여 초기 세포 matrix가 적힌 파일을 실행 시 전달하면 됩니다. 
 
-5. You can run it just by typing "sh gameoflife.sh" on BASH shell.
+5. You can run it by typing "sh default.sh" on BASH shell.
 
 
 자세한 실행 방법은 아래를 참고해 주세요.
