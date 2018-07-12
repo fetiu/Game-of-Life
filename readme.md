@@ -26,6 +26,7 @@
 	1. 실행 이후에 matrix를 manual하게 적어주거나
 	2. **리디렉션**을 이용하여 초기 세포 matrix가 적힌 파일을 실행 시 전달하면 됩니다. 
 
+5. You can run it just by typing "sh gameoflife.sh" on BASH shell.
 
 
 자세한 실행 방법은 아래를 참고해 주세요.
@@ -77,7 +78,7 @@ $ ./GoL 5 5 10
 
 ![image2](./images/image2.png)
 
-- GoL.c 파일에 define된 **SPEED** 값을 조절하거나, **usleep함수를** 주석처리하면 수행 속도를 조절할 수 있다.
+- GoL.c 파일에 define된 **DELAY** 값을 조절하거나, **usleep함수를** 주석처리하면 수행 속도를 조절할 수 있다.
 
 ```c
 #include<stdio.h>
@@ -86,7 +87,7 @@ $ ./GoL 5 5 10
 
 #define TRUE 1
 #define FALSE 0
-#define SPEED 50000 //here
+#define DELAY 50000 //here
 
 /*~~~~~~~in main()~~~~~~~~*/
 

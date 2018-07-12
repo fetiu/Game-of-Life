@@ -4,7 +4,8 @@
 
 #define TRUE 1
 #define FALSE 0
-#define SPEED 1000 //duration of one generation.(in micro seconds)
+#define DELAY 100000 //duration of one generation.(in micro seconds)a
+//1000000 means 0.1 seconds
 
 typedef unsigned char bool;
 
@@ -46,12 +47,14 @@ int main(int argc, char* argv[]){
 	set_neighbor(cells);
 
 	system("clear");
-	while( gen <= t ){
 		print_life(cells);
+	while( gen < t ){
 		
 		update_generation(cells);
 		
-		usleep(SPEED);
+		print_life(cells);
+		
+		usleep(DELAY);
 	}
 
 
