@@ -46,7 +46,7 @@ int main(int argc, char* argv[]){
 	cells = init_matrix(n, m);
 	set_neighbor(cells);
 
-	while( gen < t ){
+	while( gen <= t ){
 		print_life(cells);
 		
 		update_generation(cells);
