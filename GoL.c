@@ -46,14 +46,11 @@ int main(int argc, char* argv[]){
 	cells = init_matrix(n, m);
 	set_neighbor(cells);
 
-	system("clear");
-		print_life(cells);
 	while( gen < t ){
+		print_life(cells);
 		
 		update_generation(cells);
-		
-		print_life(cells);
-		
+
 		usleep(DELAY);
 	}
 
@@ -210,7 +207,7 @@ void update_generation(cell_t** matrix){
 
 
 void print_life(cell_t** matrix){
-	printf("\033[0d\033[0G");//move cursor to (0,0)
+	printf("\033[2d\033[0G");//move cursor to (0,2)
 
 	printf("[Generation %d]\n",gen);
 	for(int i =0; i < n ; i++){
