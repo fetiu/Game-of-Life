@@ -98,7 +98,7 @@ $ ./GoL 5 5 10
 		
 		update_generation(cells);
 		
-		usleep(SPEED); // or here. 
+		usleep(DELAY); // or here. 
 	}
 
 ```
