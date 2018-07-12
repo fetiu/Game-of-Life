@@ -9,16 +9,16 @@
 typedef unsigned char bool;
 
 typedef struct _cell_t{
-	bool status;
+	bool life;
 	int count;
 	struct _cell_t* adj[8];
 }cell_t;
 
 cell_t** init_matrix(int height, int width);
-void print_status(cell_t** matrix);
+void print_life(cell_t** matrix);
 //void print_count(cell_t** matrix);
 void set_neighbor(cell_t** matrix);
-//void update_neighbor2(cell_t** matrix, int x, int y);
+//void update_neighbor(cell_t** matrix, int x, int y);
 void update_generation(cell_t** matrix);
 void birth(cell_t* cell);
 void death(cell_t* cell);
@@ -47,7 +47,7 @@ int main(int argc, char* argv[]){
 
 	system("clear");
 	while( gen <= t ){
-		print_status(cells);
+		print_life(cells);
 		
 		update_generation(cells);
 		
@@ -78,7 +78,7 @@ cell_t** init_matrix(int height, int width){
 		scanf("%s",input_str);
 		for(int j = 0; j < width; j++)
 		{
-			matrix[i][j].status = (input_str[j] == '1')? TRUE : FALSE;
+			matrix[i][j].life = (input_str[j] == '1')? TRUE : FALSE;
 		}
 	}
 	free(input_str);
@@ -94,49 +94,49 @@ void set_neighbor(cell_t** matrix){
 			/*check accessability of neighbors*/
 			if( y - 1 > 0 && x - 1 > 0){ 
 				cell->adj[0] = &matrix[y-1][x-1];
-				cell->count += cell->adj[0]->status;
+				cell->count += cell->adj[0]->life;
 			}
 			else cell->adj[0] = NULL;
 
 			if( y - 1 > 0 ){
 				cell->adj[1] = &matrix[y-1][x];
-				cell->count += cell->adj[1]->status;
+				cell->count += cell->adj[1]->life;
 			}
 			else cell->adj[1] = NULL;
 
 			if( y - 1 > 0 && x + 1 < m){
 				cell->adj[2] = &matrix[y-1][x+1];
-				cell->count += cell->adj[2]->status;
+				cell->count += cell->adj[2]->life;
 			}
 			else cell->adj[2] = NULL;
 
 			if( x - 1 > 0){
 				cell->adj[3] = &matrix[y][x-1];
-				cell->count += cell->adj[3]->status;
+				cell->count += cell->adj[3]->life;
 			}
 			else cell->adj[3] = NULL;
 
 			if( x + 1 < m){
 				cell->adj[4] = &matrix[y][x+1];
-				cell->count += cell->adj[4]->status;
+				cell->count += cell->adj[4]->life;
 			}
 			else cell->adj[4] = NULL;
 
 			if( y + 1 < n && x - 1 > 0){
 				cell->adj[5] = &matrix[y+1][x-1];
-				cell->count += cell->adj[5]->status;
+				cell->count += cell->adj[5]->life;
 			}
 			else cell->adj[5] = NULL;
 
 			if( y + 1 < n){
 				cell->adj[6] = &matrix[y+1][x];
-				cell->count += cell->adj[6]->status;
+				cell->count += cell->adj[6]->life;
 			}
 			else cell->adj[6] = NULL;
 
 			if( y + 1 < n && x + 1 < m){
 				cell->adj[7] = &matrix[y+1][x+1];
-				cell->count += cell->adj[7]->status;
+				cell->count += cell->adj[7]->life;
 			}
 			else cell->adj[7] = NULL;
 		}
@@ -145,7 +145,7 @@ void set_neighbor(cell_t** matrix){
 
 
 void death(cell_t* cell){
-	cell->status = FALSE;
+	cell->life = FALSE;
 	
 	cell_t* neighbor;
 	for(int i = 0; i < 8; i++)
@@ -158,7 +158,7 @@ void death(cell_t* cell){
 
 
 void birth(cell_t* cell){
-	cell->status = TRUE;
+	cell->life = TRUE;
 
 	cell_t* neighbor;
 	for(int i = 0; i < 8; i++)
@@ -188,7 +188,7 @@ void update_generation(cell_t** matrix){
 		for(int j = 0; j < m; j++){
 			cell = &matrix[i][j];
 			
-			if(cell->status == TRUE)
+			if(cell->life == TRUE)
 			{
 				if(tmp[i][j] != 2 && tmp[i][j] != 3) 
 					death(cell);	
@@ -206,13 +206,13 @@ void update_generation(cell_t** matrix){
 }
 
 
-void print_status(cell_t** matrix){
+void print_life(cell_t** matrix){
 	printf("\033[0d\033[0G");//move cursor to (0,0)
 
 	printf("[Generation %d]\n",gen);
 	for(int i =0; i < n ; i++){
  		for(int j=0; j < m; j++){
-			if(matrix[i][j].status == TRUE)
+			if(matrix[i][j].life == TRUE)
 				printf("[]");
 			else
 				printf("  ");
@@ -222,8 +222,8 @@ void print_status(cell_t** matrix){
 }
 
 /*
-void update_neighbor2(cell_t** matrix, int x, int y){
-	int val = (matrix[y][x].status == TRUE)? 1:-1;
+void update_neighbor(cell_t** matrix, int x, int y){
+	int val = (matrix[y][x].life == TRUE)? 1:-1;
 
 	for(int i = y-1; i <= y+1; i++){
 		for(int j = x-1; j <= x+1; j++){
