@@ -1,2 +1,2 @@
 gcc -o GoL GoL.c
-./GoL 25 38 1000 < map.txt
+./GoL 25 38 250 < map.txt
