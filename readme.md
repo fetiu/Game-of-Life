@@ -26,7 +26,7 @@
 	1. 실행 이후에 matrix를 manual하게 적어주거나
 	2. **리디렉션**을 이용하여 초기 세포 matrix가 적힌 파일을 실행 시 전달하면 됩니다. 
 
-5. You can run it by typing "sh default.sh" on BASH shell.
+5. You can also run it by typing "**sh default.sh**" on BASH shell.
 
 
 자세한 실행 방법은 아래를 참고해 주세요.
@@ -70,7 +70,9 @@ $ ./GoL 5 5 10
 
 ![image1](./images/image1.png)
 
-​	입력한 배열이 요구하는 크기를 초과하는 경우, 초과된 부분만 무시된다. 덜 입력된 경우, 0으로 채워진다.
+- 입력이 요구하는 크기를 초과하는 경우, 초과된 부분만 무시된다. 덜 입력된 경우, 나머지는 0으로 채워진다. 
+- 경우에 따라 크기에 맞지않는 입력은 Segment Fault를 발생시킬 수 있으므로, 프로그램 실행시 정한 옵션에 맞는 배열 입력을 권장한다. 
+
 
 
 

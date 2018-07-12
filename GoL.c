@@ -5,7 +5,7 @@
 #define TRUE 1
 #define FALSE 0
 #define DELAY 100000 //duration of one generation.(in micro seconds)a
-//1000000 means 0.1 seconds
+//100000 means 0.1 seconds
 
 typedef unsigned char bool;
 
