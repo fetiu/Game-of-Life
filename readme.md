@@ -1,6 +1,6 @@
 # Game of Life (콘웨이의 생명 게임)
 
-> 주어진 n x m matrix 가 있습니다. 각 cell 에는 세포가 있습니다(총 n * m 개의 cell 이 있겠지요). 
+> 주어진 n x m matrix 가 있습니다. 각 cell 에는 세포가 있습니다(총 n * m 개의 cell 이 있습니다). 
 >
 > 각 세포는 죽거나 살아있는 상태입니다. 한 주기마다 세포는 다음과 같은 규칙에 따라 상태가 바뀌게됩니다.
 >
@@ -114,8 +114,13 @@ if the 'No module name' error occurs, type this
 ```
 $ sudo apt-get install python-pygame
 ```
+if it still doesn't works, try this
+```
+$ sh pygame.sh
+```
+this process will help you install pygame module.
 and after then, retry python GoL.py
 
 - to execute in Window,
-	- if you haven't installed python,download Python2 from [official homepage](https://www.python.org).
+	- if you haven't installed python,download Python3 from [official homepage](https://www.python.org).
 	- install 'pygame' library. Follow the guide of [this site](http://dogdriip.tistory.com/3).
