@@ -51,7 +51,7 @@ int main(int argc, char* argv[]){
 		
 		update_generation(cells);
 
-		usleep(DELAY);
+		//usleep(DELAY);
 	}
 
 
@@ -90,27 +90,28 @@ void set_neighbor(cell_t** matrix){
 	for(int y =0; y < n; y++){
 		for(int x =0; x < m; x++){
 			cell = &matrix[y][x];
-
+			
 			/*check accessability of neighbors*/
-			if( y - 1 > 0 && x - 1 > 0){ 
+			//printf("%dby%d count start\n", y,x);
+			if( y - 1 >= 0 && x - 1 >= 0){ 
 				cell->adj[0] = &matrix[y-1][x-1];
 				cell->count += cell->adj[0]->life;
 			}
 			else cell->adj[0] = NULL;
 
-			if( y - 1 > 0 ){
+			if( y - 1 >= 0 ){
 				cell->adj[1] = &matrix[y-1][x];
 				cell->count += cell->adj[1]->life;
 			}
 			else cell->adj[1] = NULL;
 
-			if( y - 1 > 0 && x + 1 < m){
+			if( y - 1 >= 0 && x + 1 < m){
 				cell->adj[2] = &matrix[y-1][x+1];
 				cell->count += cell->adj[2]->life;
 			}
 			else cell->adj[2] = NULL;
 
-			if( x - 1 > 0){
+			if( x - 1 >= 0){
 				cell->adj[3] = &matrix[y][x-1];
 				cell->count += cell->adj[3]->life;
 			}
@@ -122,7 +123,7 @@ void set_neighbor(cell_t** matrix){
 			}
 			else cell->adj[4] = NULL;
 
-			if( y + 1 < n && x - 1 > 0){
+			if( y + 1 < n && x - 1 >= 0){
 				cell->adj[5] = &matrix[y+1][x-1];
 				cell->count += cell->adj[5]->life;
 			}
@@ -141,6 +142,7 @@ void set_neighbor(cell_t** matrix){
 			else cell->adj[7] = NULL;
 		}
 	}
+	//print_count(matrix);
 }
 
 
@@ -245,4 +247,5 @@ void print_count(cell_t** matrix){
 	}
 }
 */
+
 
