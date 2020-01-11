@@ -69,7 +69,7 @@ int life_count_neighbor(int x, int y, linked_list_t *cells)
     {
         if (SUCCESS == linked_list_find_node(cells, poscmp, &neighbor[i], &node))
         {
-            count++; //log("found cell(%d, %d)", neighbor[i].x, neighbor[i].y);
+            count++;
         }
     }
     return count;
@@ -83,7 +83,7 @@ linked_list_t life_get_cells(struct life_s *life)
 void life_update(struct life_s* life)
 {
     linked_list_t *cells = &life->cells;
-    linked_list_node_t *node = cells->front;
+    linked_list_node_t *node;
     linked_list_t old;
     linked_list_init(&old);
 
@@ -109,7 +109,7 @@ void life_update(struct life_s* life)
             point_t pos = {x, y};
 
             int density = life_count_neighbor(x, y, &old);
-            log("%d cells around cell(%d, %d)", x, y, density);
+            log("%d cells around cell(%d, %d)", density, x, y);
 
             result = linked_list_find_node(cells, poscmp, &pos, &node);
 
