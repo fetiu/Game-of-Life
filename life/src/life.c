@@ -23,9 +23,8 @@ struct life_s
 
 /* private prototypes */
 
-static void spawn(linked_list_t *cells, void *pos);
+static void spawn(linked_list_t *cells, point_t pos);
 static bool poscmp(linked_list_node_t *node_to_compare, void *user_data);
-
 
 /* public functions */
 
@@ -43,11 +42,8 @@ struct life_s *life_begin(char matrix[], int width, int height)
         {
             if(matrix[y * height + x] != ' ')
             {
-                point_t *pos = malloc(sizeof(point_t));
-                pos->x = x;
-                pos->y = y;
+                point_t pos = {x, y};
                 spawn(&life->cells, pos);
-                // log("new cell (%d, %d)", x, y);
             }
         }
     }
@@ -57,7 +53,7 @@ struct life_s *life_begin(char matrix[], int width, int height)
 int life_count_neighbor(int x, int y, linked_list_t *cells)
 {
     int count = 0;
-    linked_list_node_t *unused;
+    linked_list_node_t *node;
     point_t neighbor[8] = {
         {x - 1, y - 1},
         {x, y - 1},
@@ -71,12 +67,9 @@ int life_count_neighbor(int x, int y, linked_list_t *cells)
 
     for (int i = 0; i < 8; i++)
     {
-        if (SUCCESS == linked_list_find_node(cells,
-                                             poscmp,
-                                             &neighbor[i],
-                                             &unused))
+        if (SUCCESS == linked_list_find_node(cells, poscmp, &neighbor[i], &node))
         {
-            count++; log("found cell(%d, %d)", neighbor[i].x, neighbor[i].y);
+            count++; //log("found cell(%d, %d)", neighbor[i].x, neighbor[i].y);
         }
     }
     return count;
@@ -113,21 +106,18 @@ void life_update(struct life_s* life)
         for (int x = 0; x < life->width; x++)
         {
             enum result_e result;
-            point_t *pos = malloc(sizeof(point_t));
-            pos->x = x;
-            pos->y = y;
+            point_t pos = {x, y};
 
             int density = life_count_neighbor(x, y, &old);
-            log("(%d, %d): density = %d", x, y, density);
+            log("%d cells around cell(%d, %d)", x, y, density);
 
-            result = linked_list_find_node(cells, poscmp, pos, &node);
+            result = linked_list_find_node(cells, poscmp, &pos, &node);
 
             if (result == NOT_FOUND)
             {
                 if (density == 3)
                 {
                     spawn(cells, pos);
-                    log("new cell(%d, %d)", x, y);
                 }
             }
             else if (density > 3 || density < 2)
@@ -139,7 +129,7 @@ void life_update(struct life_s* life)
             }
             else
             {
-                log("living cell(%d, %d)", x, y);
+                log("keep cell(%d, %d)", x, y);
             }
         }
     }
@@ -174,14 +164,17 @@ void life_end(struct life_s* life)
     free(life);
 }
 
-
 /* private functions */
 
-static void spawn(linked_list_t *cells, void *pos)
+static void spawn(linked_list_t *cells, point_t pos)
 {
+    point_t *data = malloc(sizeof(point_t));
     linked_list_node_t *node = malloc(sizeof(linked_list_node_t));
-    linked_list_set_node_data(node, pos);
+    data->x = pos.x;
+    data->y = pos.y;
+    linked_list_set_node_data(node, data);
     linked_list_insert_node_at_front(cells, node);
+    log("new cell(%d, %d)", pos.x, pos.y);
 }
 
 static bool poscmp(linked_list_node_t *node_to_compare, void *user_data)
