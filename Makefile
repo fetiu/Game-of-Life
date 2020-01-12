@@ -3,11 +3,11 @@ CFLAGS = -Ilife/src -Ilife/test/support #-DVERBOSE
 TARGET = life
 
 $(TARGET): objects
-	$(CC) -o conway *.o
+	$(CC) -o gol *.o
 
 objects:
-	$(CC) $(CFLAGS) -c GoL.c life/src/*.c life/test/support/*.c
+	$(CC) $(CFLAGS) -c main.c life/src/*.c life/test/support/*.c
 
 clean:
-	rm *.o conway
+	rm *.o gol
 

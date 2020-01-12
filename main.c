@@ -52,7 +52,7 @@ char *input_matrix(int width, int height)
 	size_t size;
 
 	/* get matrix from stdin */
-	printf(">> insert %d x %d matrix\n", width, height);
+	printf(">> insert %d x %d matrix (o: alive, else: empty)\n", width, height);
 
 	while (strlen(matrix) < width * height)
 	{
