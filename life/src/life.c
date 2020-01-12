@@ -40,7 +40,7 @@ struct life_s *life_begin(char matrix[], int width, int height)
     {
         for (int x = 0; x < width; x++)
         {
-            if(matrix[y * height + x] != ' ')
+            if(matrix[y * height + x] == 'o')
             {
                 point_t pos = {x, y};
                 spawn(&life->cells, pos);
@@ -84,21 +84,27 @@ void life_update(struct life_s* life)
 {
     linked_list_t *cells = &life->cells;
     linked_list_node_t *node;
+
+    if (cells->count == 0)
+    {
+        return;
+    }
+
+    /* copy cells to a local buffer before update */
+    struct {
+        linked_list_node_t node;
+        point_t data;
+    } clone[cells->count];
+
     linked_list_t old;
     linked_list_init(&old);
 
-    struct {
-        linked_list_node_t cell;
-        point_t pos;
-    } clone[cells->count];
-
-    /* copy cells to a local buffer before update */
     for (node = cells->front; node != NULL; node = node->next)
     {
         int i = old.count; //count increases after insertion
-        clone[i].pos = *(point_t *)node->data;
-        linked_list_set_node_data(&clone[i].cell, &clone[i].pos);
-        linked_list_insert_node_at_front(&old, &clone[i].cell);
+        clone[i].data = *(point_t *)node->data;
+        linked_list_set_node_data(&clone[i].node, &clone[i].data);
+        linked_list_insert_node_at_front(&old, &clone[i].node);
     }
 
     for (int y = 0; y < life->height; y++)
@@ -139,17 +145,16 @@ void life_update(struct life_s* life)
 void life_draw(struct life_s* life)
 {
     linked_list_node_t *node = life->cells.front;
-    system("clear");
+    printf("\033[2J"); // Clear the screen, move to (0,0)
 
     while (node != NULL)
     {
         point_t *pos = node->data;
-        /* draw 'o' on the pos of x doubled and y plus 1 */
-        printf("\033[%dd\033[%dGo", pos->y + 1, pos->x * 2);
+        /* Draw 'o' on desirable position (x + 1, y + 1) */
+        printf("\033[%dd\033[%dGo", pos->y + 1, pos->x + 1);
         node = node->next;
     }
-    /* end of the world */
-    printf("\033[%dd\n", life->height);
+    printf("\033[%dd\n", life->height); // Move to the end
 }
 
 void life_end(struct life_s* life)

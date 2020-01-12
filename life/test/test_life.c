@@ -15,9 +15,9 @@ void setUp(void)
 {
     char input[] =
         "     "
-        " xxx "
+        " ooo "
         "     "
-        " xxx "
+        " ooo "
         "     ";
 
     life = life_begin(input,5,5);
@@ -47,7 +47,7 @@ void test_life_begin(void)
     int len = sizeof(expected)/sizeof(point_t);
     TEST_ASSERT_EQUAL_INT(len, count);
 
-    for (int i; i < 6; i++)
+    for (int i; i < len; i++)
     {
         enum result_e ret = linked_list_find_node(&actual,
                                                 point_cmp,
@@ -93,7 +93,7 @@ void test_life_update()
     int len = sizeof(expected)/sizeof(point_t);
     TEST_ASSERT_EQUAL_INT(len, count);
 
-    for (int i; i < 3; i++)
+    for (int i; i < len; i++)
     {
         enum result_e ret = linked_list_find_node(&actual,
                                                 point_cmp,
@@ -110,16 +110,16 @@ void test_life_to_array()
 {
     char input[] =
         "     "
-        " xxx "
+        " ooo "
         "     "
-        " xxx "
+        " ooo "
         "     ";
     char expected[] =
-        "  x  "
-        "  x  "
+        "  o  "
+        "  o  "
         "     "
-        "  x  "
-        "  x  ";
+        "  o  "
+        "  o  ";
     char actual[5*5];
 }
 */
