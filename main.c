@@ -47,7 +47,7 @@ int main(int argc, char* argv[]){
 
 char *input_matrix(int width, int height)
 {
-	char *matrix = malloc(sizeof(char) * (width * height + 1)); //+1 for null
+	char *matrix = calloc(width * height + 1, sizeof(char)); // +1 for null
 	char *line = NULL;
 	size_t size;
 
@@ -56,15 +56,14 @@ char *input_matrix(int width, int height)
 
 	while (strlen(matrix) < width * height)
 	{
-		int n = getline(&line, &size, stdin) - 1; // do not count line feed
+		int n = getline(&line, &size, stdin) - 1; // to not count line feed
 		if (n > width)
 		{
 			printf("\033[1A\033[K"); // go up and erase line
 			continue;
 		}
-		/* Fill the rest with spaces */
-		memset(line + n, ' ', width - n);
-		line[width] = '\0'; // terminate modified string
+		/* Fill the rest with null */
+		memset(line + n, 0, width - n);
 		printf("\033[1A%s|\n", line); // show priview of line
 		strncat(matrix, line, width);
 	}
